@@ -17,20 +17,25 @@ namespace DesafioFundamentos.Models
             // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
             // *IMPLEMENTE AQUI*
             string adicionarPlaca;
+            bool validaPlaca = false;
             Console.WriteLine("Digite a placa do veículo para estacionar:");
-            do
+            while (validaPlaca == false)
             {
-                adicionarPlaca = Console.ReadLine();
-                if (adicionarPlaca.Length == 8)
                 {
-                    veiculos.Add(adicionarPlaca);
-                    Console.WriteLine("Placa adicionada com sucesso");
+                    adicionarPlaca = Console.ReadLine();
+                    if (adicionarPlaca.Length == 8)
+                    {
+                        veiculos.Add(adicionarPlaca);
+                        Console.WriteLine("Placa adicionada com sucesso");
+                        validaPlaca = true;
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Placa digitada invalida, por favor, digite novamente uma placa válida com 8 dígitos.");
+                    }
                 }
-                else
-                {
-                    Console.WriteLine("Placa digitada invalida, por favor, digite novamente uma placa válida com 8 dígitos.");
-                }
-            } while (adicionarPlaca.Length == 8);
+            }
         }
 
         public void RemoverVeiculo()
@@ -50,7 +55,7 @@ namespace DesafioFundamentos.Models
                 // TODO: Realizar o seguinte cálculo: "precoInicial + precoPorHora * horas" para a variável valorTotal                
                 // *IMPLEMENTE AQUI*
                 int horas = int.Parse(Console.ReadLine());
-                decimal valorTotal = (precoInicial + precoPorHora) * horas;
+                decimal valorTotal = precoInicial + precoPorHora * horas;
 
                 // TODO: Remover a placa digitada da lista de veículos
                 // *IMPLEMENTE AQUI*
