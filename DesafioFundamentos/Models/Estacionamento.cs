@@ -12,11 +12,27 @@ namespace DesafioFundamentos.Models
             this.precoPorHora = precoPorHora;
         }
 
-        public void AdicionarVeiculo()
+        public void AdicionarVeiculo(string placa)
         {
             // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
             // *IMPLEMENTE AQUI*
             Console.WriteLine("Digite a placa do veículo para estacionar:");
+            do
+            {
+                placa = Console.ReadLine();
+                if (placa.Length == 8)
+                {
+                    veiculos.Add(placa);
+                }
+                else if (placa.Length < 8)
+                {
+                    Console.WriteLine("Placa digitada com menos de 8 dígitos, por favor, digite novamente uma placa válida com 8 dígitos.");
+                }
+                else
+                {
+                    Console.WriteLine("Placa digitada com mais de 8 dígitos, por favor, digite novamente uma placa válida com 8 dígitos.");
+                }
+            } while (placa.Length == 8);
         }
 
         public void RemoverVeiculo()
